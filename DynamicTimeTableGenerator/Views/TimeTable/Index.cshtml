@@ -1,0 +1,84 @@
+﻿@model DynamicTimeTableGenerator.ViewModels.TimetableInputViewModel
+
+<h2 class="heading">Dynamic Time-Table Generator</h2>
+
+<form method="post" asp-action="EnterSubjects" class="form-container">
+    <div class="form-group">
+        <label>No. of Working Days:</label>
+        <input type="number" asp-for="WorkingDays" class="form-control" min="1" required />
+        <span asp-validation-for="WorkingDays" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label>No. of Subjects per Day:</label>
+        <input type="number" asp-for="SubjectsPerDay" class="form-control" min="1" required />
+        <span asp-validation-for="SubjectsPerDay" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Total Subjects:</label>
+        <input type="number" asp-for="TotalSubjects" class="form-control" min="1" required />
+        <span asp-validation-for="TotalSubjects" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn-submit">Next</button>
+</form>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        text-align: center;
+    }
+
+    .heading {
+        margin-top: 20px;
+        color: #333;
+    }
+
+    .form-container {
+        background: white;
+        width: 400px;
+        padding: 20px;
+        margin: 20px auto;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+        text-align: left;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .text-danger {
+        font-size: 14px;
+        color: red;
+    }
+
+    .btn-submit {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .btn-submit:hover {
+        background-color: #0056b3;
+    }
+</style>

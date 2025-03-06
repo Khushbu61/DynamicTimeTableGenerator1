@@ -1,0 +1,103 @@
+﻿@{
+    var totalHours = ViewBag.TotalHours;
+
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.Message))
+{
+    <div class="alert alert-danger">
+        @ViewBag.Message
+    </div>
+}
+else
+{
+    <h2 class="heading">Enter Subject Hours</h2>
+
+    <form method="post" asp-action="GenerateTimetable" class="form-container">
+        <p class="info-text">Total hours must equal: <strong>@totalHours</strong></p>
+
+        <table class="styled-table">
+            <tr>
+                <th>Subject</th>
+                <th>Hours</th>
+            </tr>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td><input type="text" name="Subjects[@i]" class="form-control" required /></td>
+                    <td><input type="number" name="Hours[@i]" class="form-control" required /></td>
+                </tr>
+            }
+        </table>
+
+        <button type="submit" class="btn-submit">Generate</button>
+    </form>
+}
+
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        text-align: center;
+    }
+
+    .heading {
+        margin-top: 20px;
+        color: #333;
+    }
+
+    .info-text {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+
+    .form-container {
+        background: white;
+        width: 500px;
+        padding: 20px;
+        margin: 20px auto;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .styled-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+    }
+
+        .styled-table th, .styled-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .styled-table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+    .form-control {
+        width: 95%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    .btn-submit {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+        .btn-submit:hover {
+            background-color: #0056b3;
+        }
+</style>
